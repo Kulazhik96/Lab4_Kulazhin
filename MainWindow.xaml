@@ -1,0 +1,233 @@
+﻿<Window x:Class="Lab4_Kulazhin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab4_Kulazhin"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--TextBoxes for first rectangle-->
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Set first rectangle parameters"
+                  FontFamily="ISOCPEUR" FontSize="20" FontWeight="Bold">
+            <StackPanel>
+                <TextBox x:Name="BottomLeftRectanglePoint_1"
+                 Text="Enter coordinates X;Y for left-bottom rectangle point" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="BottomLeftRectanglePoint_1_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+
+                <TextBox x:Name="LengthRectangle_1"
+                 Text="Enter rectangle length" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="LengthRectangle_1_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+
+                <TextBox x:Name="WidthRectangle_1"
+                 Text="Enter rectangle width" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="WidthRectangle_1_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!--TextBoxes for second rectangle-->
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Set second rectangle parameters"
+                  FontFamily="ISOCPEUR" FontSize="20" FontWeight="Bold">
+            <StackPanel>
+                <TextBox x:Name="BottomLeftRectanglePoint_2"
+                 Text="Enter coordinates X;Y for left-bottom rectangle point" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="BottomLeftRectanglePoint_2_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+
+                <TextBox x:Name="LengthRectangle_2"
+                 Text="Enter rectangle length" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="LengthRectangle_2_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+
+                <TextBox x:Name="WidthRectangle_2"
+                 Text="Enter rectangle width" TextWrapping="Wrap" FontSize="16" FontFamily="ISOCPEUR" FontWeight="Regular" VerticalContentAlignment="Center"
+                 GotFocus="WidthRectangle_2_GotFocus"
+                 Width ="380" Height="40" Margin="0,10,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        
+        <!--RadioButtons for all operations with rectangles-->
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Operations"
+                  FontFamily="ISOCPEUR" FontSize="20" FontWeight="Bold">
+            <ScrollViewer>
+                <StackPanel>
+                    <!--Operations with single rectangle-->
+                    <Expander Header="With single rectangle"
+                          FontFamily="ISOCPEUR" FontSize="16" FontWeight="Regular">
+                        <StackPanel>
+                            <RadioButton x:Name="ResizeFirstRectangle"
+                                     GroupName="Rectangle" Content="Resize first rectangle"/>
+
+                            <RadioButton x:Name="ResizeSecondRectangle"
+                                     GroupName="Rectangle" Content="Resize second rectangle"/>
+                            <TextBox x:Name="ResizeRectangle_1Length" Text="Set new length" Foreground="Gray"
+                                 GotFocus="ResizeRectangle_1Length_GotFocus" Width="100" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="ResizeRectangle_1Width" Text="Set new width" Foreground="Gray"
+                                 GotFocus="ResizeRectangle_1Width_GotFocus" Width="100" HorizontalAlignment="Left"/>
+
+                            <RadioButton x:Name="MoveFirstRectangle"
+                                     GroupName="Rectangle" Content="Move first rectangle"/>
+                            <RadioButton x:Name="MoveSecondRectangle"
+                                     GroupName="Rectangle" Content="Move second rectangle"/>
+                            <TextBox x:Name="MoveRectangle_X" Text="Set X-length to move" Foreground="Gray"
+                                 GotFocus="MoveRectangle_X_GotFocus" Width="150" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="MoveRectangle_Y" Text="Set Y-width to move" Foreground="Gray"
+                                 GotFocus="MoveRectangle_Y_GotFocus" Width="150" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!--Operations with both rectangles-->
+                    <Expander Header="With both rectangles"
+                          FontFamily="ISOCPEUR" FontSize="16" FontWeight="Regular">
+                        <StackPanel>
+                            <RadioButton x:Name="GetIntersectionRadioButton"
+                                         GroupName="Rectangle" Content="Get intersection of two rectangles"/>
+                            <RadioButton x:Name="GetLeastIncludingBothRadioButton"
+                                         GroupName="Rectangle" Content="Get least rectangle, including both rectangles"/>
+                        </StackPanel>
+                    </Expander>
+                    
+                    <!--Create rectangles button-->
+                    <Button x:Name="CreateRectangles" Content="Create rectangles"
+                            Background="AliceBlue"
+                            Width="200" Margin="0,10,0,0"
+                            Click="CreateRectangles_Click"/>
+
+                    <!--Run button-->
+                    <Button x:Name="RunOperation" Content="Run"
+                            Background="AliceBlue"
+                            Width="200" Margin="0,5,0,0"
+                            Click="RunOperation_Click"/>
+                    
+                    <!--Clear input button-->
+                    <Button x:Name="ClearInput" Content="Clear input"
+                            Background="AliceBlue"
+                            Width="200" Margin="0,5,0,0"
+                            Click="ClearInput_Click"/>
+                    
+                    <!--Clear output button-->
+                    <Button x:Name="ClearOutput" Content="Clear output"
+                            Background="AliceBlue"
+                            Width="200" Margin="0,5,0,0"
+                            Click="ClearOutput_Click"/>
+                </StackPanel>
+            </ScrollViewer>
+        </GroupBox>
+        
+        <!--Results-->
+        <GroupBox Header="Results" Grid.Row="1" Grid.Column="1"
+                  FontFamily="ISOCPEUR" FontSize="20" FontWeight="Bold">
+            <Grid ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--Titles-->
+                <TextBlock Text="First rectangle info" FontSize="16" FontWeight="Regular" TextWrapping="Wrap"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Text="Second rectangle info" FontSize="16" FontWeight="Regular" TextWrapping="Wrap"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Grid.Row="2" Grid.Column="0"/>
+                <TextBlock Text="Intersection result rectangle" FontSize="16" FontWeight="Regular" TextWrapping="Wrap"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Grid.Row="3" Grid.Column="0"/>
+                <TextBlock Text="Least contains both rectangle" FontSize="16" FontWeight="Regular" TextWrapping="Wrap"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Grid.Row="4" Grid.Column="0"/>
+              
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="Left-bottom point (X;Y)" DockPanel.Dock="Top"
+                           FontSize="14" FontWeight="Regular" TextWrapping="Wrap"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.Column="2"
+                           Text="Length" DockPanel.Dock="Top"
+                           FontSize="14" FontWeight="Regular" TextWrapping="Wrap"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.Column="3"
+                           Text="Width" DockPanel.Dock="Top"
+                           FontSize="14" FontWeight="Regular" TextWrapping="Wrap"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                
+                <!--Information boxes-->
+                <!--First rectangle-->
+                <TextBox x:Name="FirstRectangleLeftBottomPoint_Show"
+                         Grid.Row="1" Grid.Column="1"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="FirstRectangleLength_Show"
+                         Grid.Row="1" Grid.Column="2"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="FirstRectangleWidth_Show"
+                         Grid.Row="1" Grid.Column="3"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                
+                <!--Second rectangle-->
+                <TextBox x:Name="SecondRectangleLeftBottomPoint_Show"
+                         Grid.Row="2" Grid.Column="1"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="SecondRectangleLength_Show"
+                         Grid.Row="2" Grid.Column="2"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="SecondRectangleWidth_Show"
+                         Grid.Row="2" Grid.Column="3"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                
+                <!--Intersection-->
+                <TextBox x:Name="IntersectionRectangleLeftBottomPoint_Show"
+                         Grid.Row="3" Grid.Column="1"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="IntersectionRectangleLength_Show"
+                         Grid.Row="3" Grid.Column="2"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="IntersectionRectangleWidth_Show"
+                         Grid.Row="3" Grid.Column="3"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+
+                <!--Least contains both-->
+                <TextBox x:Name="LeastContainsBothRectangleLeftBottomPoint_Show"
+                         Grid.Row="4" Grid.Column="1"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="LeastContainsBothRectangleLength_Show"
+                         Grid.Row="4" Grid.Column="2"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+                <TextBox x:Name="LeastContainsBothRectangleWidth_Show"
+                         Grid.Row="4" Grid.Column="3"
+                         IsReadOnly="True"
+                         FontWeight="Regular"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
